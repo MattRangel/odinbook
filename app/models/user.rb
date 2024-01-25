@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def follow(user)
     self.following_relationships.create( following: user )
   end
+
+  def like(post)
+    self.likes.create(post: post)
+  end
 end
