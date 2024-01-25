@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :likes
+  has_many :comments
 
   def follow(user)
     self.following_relationships.create( following: user )
