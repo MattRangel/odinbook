@@ -40,4 +40,8 @@ class UserTest < ActiveSupport::TestCase
     assert_not(@user2.like(post).valid?)
   end
 
+  test "User can comment on a post" do
+    post = @user1.posts.create(body: "Hello World")
+    assert(@user2.comment(post, "Cool!").valid?)
+  end
 end
