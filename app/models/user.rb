@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :followed_by_relationships, class_name: "Relationship", foreign_key: "following_id"
   has_many :following_relationships, class_name: "Relationship", foreign_key: "followed_by_id"
 
+  has_many :posts
+
   def follow(user)
     self.following_relationships.create( following: user )
   end
