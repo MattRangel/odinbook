@@ -28,4 +28,16 @@ class UserTest < ActiveSupport::TestCase
     relationship = @user1.follow(@user2)
     assert_includes(@user2.followed_by_relationships, relationship)
   end
+
+  test "Users can like post" do
+    post = @user1.posts.create(body: "Hello World")
+    assert(@user2.like(post).valid?)
+  end
+
+  test "User can't like post twice" do
+    post = @user1.posts.create(body: "Hello World")
+    @user2.like(post)
+    assert_not(@user2.like(post).valid?)
+  end
+
 end
