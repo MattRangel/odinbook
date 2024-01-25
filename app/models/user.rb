@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def like(post)
     self.likes.create(post: post)
   end
+
+  def comment(post, body)
+    self.comments.create(post: post, body: body)
+  end
 end
