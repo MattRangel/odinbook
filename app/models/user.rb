@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def comment(post, body)
     self.comments.create(post: post, body: body)
   end
+
+  def feed_user_ids
+    self.following_relationships.pluck(:following_id) << self.id
+  end
 end
