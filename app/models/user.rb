@@ -11,18 +11,6 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
 
-  def follow(user)
-    self.following_relationships.create( following: user )
-  end
-
-  def like(post)
-    self.likes.create(post: post)
-  end
-
-  def comment(post, body)
-    self.comments.create(post: post, body: body)
-  end
-
   def feed_user_ids
     self.following_relationships.pluck(:following_id) << self.id
   end
