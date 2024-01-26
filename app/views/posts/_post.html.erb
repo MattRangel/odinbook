@@ -2,9 +2,11 @@
 <p><%= post.body %></p>
 <p><%= pluralize(post.likes.count, 'like') %></p>
 <%= render "comments/new", post_id: post.id %>
-<p>Comments: </p>
-<%= turbo_frame_tag "#{dom_id(post)}_comments" do %>
-  <%= render post.comments %>
-<% end %>
+<div data-controller="item-section">
+  <p> Comments: <button data-action="item-section#toggle" class="show-hide-button">Show/Hide</button></p>
+  <%= turbo_frame_tag "#{dom_id(post)}_comments", "data-item-section-target": "items" do %>
+    <%= render post.comments %>
+  <% end %>
+</div>
 <br>
 
