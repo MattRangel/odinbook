@@ -1,0 +1,5 @@
+<%= form_with url: comments_path, scope: :comment do |f|  %>
+  <%= f.text_field :body %>
+  <%= f.hidden_field :post_id, value: post_id %>
+  <%= f.submit "Post Comment" %>
+<% end %>
