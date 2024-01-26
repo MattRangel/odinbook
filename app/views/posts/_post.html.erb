@@ -1,0 +1,10 @@
+<p><%= link_to post.user.email, post.user %> @ <%= post.created_at.to_fs(:long) %></p>
+<p><%= post.body %></p>
+<p><%= pluralize(post.likes.count, 'like') %></p>
+<%= render "comments/new", post_id: post.id %>
+<p>Comments: </p>
+<%= turbo_frame_tag "#{dom_id(post)}_comments" do %>
+  <%= render post.comments %>
+<% end %>
+<br>
+
