@@ -6,6 +6,6 @@ class Post < ApplicationRecord
   has_many :comments
 
   def self.feed(id_list)
-    where(user_id: id_list).order(created_at: :desc)
+    includes(:user, :likes, comments: [:user]).where(user_id: id_list).order(created_at: :desc)
   end
 end
