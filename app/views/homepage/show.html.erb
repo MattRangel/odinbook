@@ -1,2 +1,2 @@
-<h1>Welcome back, <%= current_user.name %></h1>
+<h1>Welcome back, <%= current_user.name %> | <%= link_to "Create Post", new_post_path %></h1>
 <%= render @posts %>
