@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def feed_user_ids
     self.following_relationships.pluck(:following_id) << self.id
   end
+
+  def following?(user)
+    self.following_relationships.where(following: user).any?
+  end
 end
