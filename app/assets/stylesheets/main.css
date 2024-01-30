@@ -2,3 +2,28 @@
   font-weight: bold;
   padding: 0 1em;
 }
+
+.button {
+  display: inline-block;
+  text-align: center;
+  width: 6em;
+  border-radius: 8px;
+  color: black;
+}
+
+.button > a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.follow-button {
+  background-color: darkseagreen;
+}
+
+.follow-button.not-following {
+  background-color: seagreen;
+}
+
+.edit-button {
+  background-color: steelblue;
+}
