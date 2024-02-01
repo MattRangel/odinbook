@@ -6,11 +6,17 @@
 .button {
   display: inline-block;
   text-align: center;
-  width: 6em;
+  min-width: 6em;
+  padding: 0 .5em;
   border-radius: 8px;
   color: black;
+  border: none;
+  font: inherit;
 }
 
+input.button {
+  cursor: pointer;
+}
 .button > a {
   color: inherit;
   text-decoration: inherit;
