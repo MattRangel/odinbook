@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :bio, length: { maximum: 100 }
+  validates :name, length: { maximum: 12 }, presence: true
   has_many :followed_by_relationships, class_name: "Relationship", foreign_key: "following_id"
   has_many :following_relationships, class_name: "Relationship", foreign_key: "followed_by_id"
 
