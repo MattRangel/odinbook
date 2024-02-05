@@ -11,5 +11,14 @@
 <% end %>
 </h1>
 <h2><%= @user.email%></h2>
+<h2>
+<%= turbo_frame_tag "user-bio" do %>
+  <% if current_user.eql?(@user) %>
+    <%= link_to tag.div("Edit Bio", class: "button edit-button"), edit_user_path %>
+  <% end %>
+  <br>
+  <%= @user.bio %>
+<% end %>
+</h2>
 <br><h2>Posts:</h2>
 <%= render @posts %>

@@ -2,8 +2,18 @@
 <h2>
 <%= turbo_frame_tag "user-header" do %>
   <%= form_with model: @user do |f| %>
-    <%= f.text_field :name, size: 15, "max-length": 12, style: "font-size: inherit", value: @user.name %>
+    <%= f.text_field :name, size: 15, "max-length": 12, class: "singular-input", value: @user.name %>
     <%= f.submit "Save", class: "button edit-button" %>
+  <% end %>
+<% end %>
+</h2>
+<h1>Edit Your Bio</h1>
+<h2>
+<%= turbo_frame_tag "user-bio" do %>
+  <%= form_with model: @user do |f| %>
+    <%= f.submit "Save", class: "button edit-button" %>
+    <br>
+    <%= f.text_area :bio, value: @user.bio, cols: 30, rows: 4, maxlength: 100, class: "singular-input" %>
   <% end %>
 <% end %>
 </h2>
