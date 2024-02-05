@@ -73,3 +73,13 @@ end
 
 # User authentication [https://github.com/heartcombo/devise]
 gem "devise", "~> 4.9"
+
+# Multi-provider authentication [https://github.com/omniauth/omniauth/]
+gem "omniauth", "~> 2.1"
+
+# [https://github.com/cookpad/omniauth-rails_csrf_protection]
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+
+
+gem "omniauth-github", "~> 2.0"
