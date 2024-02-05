@@ -7,12 +7,14 @@ class User < ApplicationRecord
   has_many :followed_by_relationships, class_name: "Relationship", foreign_key: "following_id"
   has_many :following_relationships, class_name: "Relationship", foreign_key: "followed_by_id"
 
+  delegate :following_ids, to: :following_relationships
+
   has_many :posts
   has_many :likes
   has_many :comments
 
   def feed_user_ids
-    self.following_relationships.pluck(:following_id) << self.id
+    self.following_ids << self.id
   end
 
   def following?(user)

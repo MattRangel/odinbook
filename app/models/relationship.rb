@@ -5,4 +5,8 @@ class Relationship < ApplicationRecord
 
   scope :accepted, -> { where(accepted: true) }
   scope :pending, -> { where(accepted: false) }
+
+  def self.following_ids
+    pluck(:following_id)
+  end
 end
