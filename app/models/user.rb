@@ -16,6 +16,14 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  def self.from_omniauth(auth)
+    find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name[0...12]
+    end
+  end
+
   def feed_user_ids
     self.following_ids << self.id
   end
