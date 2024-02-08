@@ -37,3 +37,8 @@ input.button {
 .edit-button {
   background-color: steelblue;
 }
+
+.profile-photo {
+  height: 2em;
+  border-radius: 10%;
+}

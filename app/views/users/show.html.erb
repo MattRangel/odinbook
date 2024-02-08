@@ -1,4 +1,5 @@
 <h1>
+<%= image_tag @user.photo_url, class: "profile-photo" %>
 <%= turbo_frame_tag "user-header" do %>
   <%= @user.name %> |
   <% if current_user.eql?(@user) %>
