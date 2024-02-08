@@ -16,11 +16,14 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  before_save :set_photo_url
+
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.name = auth.info.name[0...12]
+      user.photo_url = auth.info.image
     end
   end
 
@@ -30,5 +33,16 @@ class User < ApplicationRecord
 
   def following?(user)
     self.following_relationships.where(following: user).any?
+  end
+
+  private
+
+  def set_photo_url
+    self.photo_url = self.gravatar_photo_url if self.photo_url.nil?
+  end
+
+  def gravatar_photo_url
+    "https://gravatar.com/avatar/" +
+      Digest::SHA256.hexdigest(self.email)
   end
 end
