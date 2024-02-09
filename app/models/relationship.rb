@@ -11,11 +11,11 @@ class Relationship < ApplicationRecord
   end
 
   def self.find_relationship_following(user_id)
-    where(following_id: user_id).first
+    find_by following: user_id
   end
 
   def self.find_relationship_followed_by(user_id)
-    where(followed_by_id: user_id).first
+    find_by followed_by: user_id
   end
 
   def accepted?
