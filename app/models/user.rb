@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :following_relationships, class_name: "Relationship", foreign_key: "followed_by_id", dependent: :destroy
 
   delegate :following_ids, to: :following_relationships
+  delegate :find_relationship_following, to: :following_relationships
+  delegate :find_relationship_followed_by, to: :followed_by_relationships
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -29,10 +31,6 @@ class User < ApplicationRecord
 
   def feed_user_ids
     self.following_ids << self.id
-  end
-
-  def following?(user)
-    self.following_relationships.where(following: user).any?
   end
 
   private
