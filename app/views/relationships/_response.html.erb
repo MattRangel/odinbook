@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "user_#{user_id}_response" do %>
+  <%= link_to tag.div("Accept", class: "button accept-button"), relationships_path(relationship:{followed_by_id: user_id}, authenticity_token: form_authenticity_token), data: { turbo_method: :put } %>
+  <%= link_to tag.div("Reject", class: "button reject-button"), relationships_path(relationship:{followed_by_id: user_id}, authenticity_token: form_authenticity_token), data: { turbo_method: :delete } %>
+<% end %>
