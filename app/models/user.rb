@@ -22,6 +22,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   before_save :set_photo_url
+  after_create -> { UserMailer.with(user: self).welcome_email.deliver_later }
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
