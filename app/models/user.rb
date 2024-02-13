@@ -10,7 +10,10 @@ class User < ApplicationRecord
   has_many :followed_by_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   has_many :following_relationships, class_name: "Relationship", foreign_key: "followed_by_id", dependent: :destroy
 
-  delegate :following_ids, to: :following_relationships
+  has_many :following_users, through: :following_relationships, source: :following
+  has_many :followed_by_users_accepted, -> { where('relationships.accepted': true) }, through: :followed_by_relationships, source: :followed_by
+  has_many :followed_by_users_pending, -> { where('relationships.accepted': false) }, through: :followed_by_relationships, source: :followed_by
+
   delegate :find_relationship_following, to: :following_relationships
   delegate :find_relationship_followed_by, to: :followed_by_relationships
 
@@ -30,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def feed_user_ids
-    self.following_ids << self.id
+    self.following_user_ids << self.id
   end
 
   private
