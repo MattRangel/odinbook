@@ -1,5 +1,6 @@
+<% button_partial ||= nil %>
 <div class="user-card">
 <%= image_tag user.photo_url, class: "profile-photo" %>
 <p><%= link_to user.name, user_path(user) %> ( <%= user.email %> )</p>
-<%= render "users/follow", user_id: user.id unless current_user.eql?(user) %>
+<%= render button_partial, user_id: user.id unless current_user.eql?(user) || button_partial.nil? %>
 </div>
