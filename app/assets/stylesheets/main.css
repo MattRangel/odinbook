@@ -30,6 +30,14 @@ input.button {
   background-color: darkseagreen;
 }
 
+.accept-button {
+  background-color: seagreen;
+}
+
+.reject-button {
+  background-color: indianred;
+}
+
 .follow-button.not-following {
   background-color: seagreen;
 }
