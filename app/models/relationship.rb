@@ -6,10 +6,6 @@ class Relationship < ApplicationRecord
   scope :accepted, -> { where(accepted: true) }
   scope :pending, -> { where(accepted: false) }
 
-  def self.following_ids
-    pluck(:following_id)
-  end
-
   def self.find_relationship_following(user_id)
     find_by following: user_id
   end
