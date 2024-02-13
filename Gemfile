@@ -62,6 +62,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Preview email in browser [https://github.com/ryanb/letter_opener]
+  gem "letter_opener"
 end
 
 group :test do
