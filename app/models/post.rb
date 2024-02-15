@@ -2,10 +2,13 @@ class Post < ApplicationRecord
   belongs_to :user
   validates :body, length: { maximum: 250 }
 
+  default_scope { order(created_at: :desc) }
+  scope :for_view, -> { includes(:user, :likes, comments: [:user]) }
+
   has_many :likes
   has_many :comments
 
   def self.feed(id_list)
-    includes(:user, :likes, comments: [:user]).where(user_id: id_list).order(created_at: :desc)
+    for_view.where(user_id: id_list)
   end
 end
