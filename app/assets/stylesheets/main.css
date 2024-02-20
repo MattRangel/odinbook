@@ -56,3 +56,26 @@ input.button {
   align-items: center;
   gap: 1em;
 }
+
+.menu-vertical {
+  background-color: lightblue;
+  padding: .2em 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-vertical ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1em;
+}
+
+.menu-vertical li {
+  display: inline;
+}
+
+nav a {
+  text-decoration: underline;
+  color: black;
+}
