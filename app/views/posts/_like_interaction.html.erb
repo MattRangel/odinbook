@@ -1,8 +1,10 @@
 <p>
-<% if post.likes.where(user: current_user).empty? %>
-  <%= link_to "❤️", likes_path(like:{post_id: post.id}, authenticity_token: form_authenticity_token), data: { turbo_method: :post } %>
-<% else %>
-  <%= "💖" %>
-<% end %>
+<span class="like-heart">
+  <% if post.likes.where(user: current_user).empty? %>
+    <%= link_to "❤️", likes_path(like:{post_id: post.id}, authenticity_token: form_authenticity_token), data: { turbo_method: :post } %>
+  <% else %>
+    <%= "💖" %>
+  <% end %>
+</span>
 <%= pluralize(post.likes.count, 'like') %>
 </p>

@@ -1,25 +1,27 @@
-<h1>
-<%= image_tag @user.photo_url, class: "profile-photo" %>
-<%= turbo_frame_tag "user-header" do %>
-  <%= @user.name %> |
-  <% if current_user.eql?(@user) %>
-      <%= link_to tag.div("Edit", class: "button edit-button"), edit_user_path %>
-  <% else %>
-    <%= turbo_frame_tag "#{dom_id(@user)}_follow" do %>
-      <%= render "users/follow", user_id: @user.id %>
+<div id="user-info">
+  <h1>
+  <%= image_tag @user.photo_url, class: "profile-photo" %>
+  <%= turbo_frame_tag "user-header" do %>
+    <%= @user.name %> |
+    <% if current_user.eql?(@user) %>
+        <%= link_to tag.div("Edit", class: "button edit-button"), edit_user_path %>
+    <% else %>
+      <%= turbo_frame_tag "#{dom_id(@user)}_follow" do %>
+        <%= render "users/follow", user_id: @user.id %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
-</h1>
-<h2><%= @user.email%></h2>
-<h2>
-<%= turbo_frame_tag "user-bio" do %>
-  <% if current_user.eql?(@user) %>
-    <%= link_to tag.div("Edit Bio", class: "button edit-button"), edit_user_path %>
+  </h1>
+  <h2><%= @user.email%></h2>
+  <h2 id="bio-text">
+  <%= turbo_frame_tag "user-bio" do %>
+    <% if current_user.eql?(@user) %>
+      <%= link_to tag.div("Edit Bio", class: "button edit-button"), edit_user_path %>
+    <% end %>
+    <br>
+    <%= @user.bio %>
   <% end %>
-  <br>
-  <%= @user.bio %>
-<% end %>
-</h2>
+  </h2>
+</div>
 <br><h2>Posts:</h2>
-<%= render @posts %>
+<%= render(@posts) || tag.h3("No posts yet!") %>

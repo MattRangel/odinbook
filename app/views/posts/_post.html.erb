@@ -1,14 +1,15 @@
-<p><%= link_to post.user.email, post.user %> @ <%= post.created_at.to_fs(:long) %></p>
-<p><%= post.body %></p>
-<%= turbo_frame_tag "#{dom_id(post)}_likes" do %>
-  <%= render "posts/like_interaction", post: post %>
-<% end %>
-<%= render "comments/new", post_id: post.id %>
-<div data-controller="item-section">
-  <p> Comments: <button data-action="item-section#toggle" class="show-hide-button">Show/Hide</button></p>
-  <%= turbo_frame_tag "#{dom_id(post)}_comments", "data-item-section-target": "items" do %>
-    <%= render post.comments %>
+<div class="post">
+  <p><%= link_to post.user.email, post.user %> @ <%= post.created_at.to_fs(:long) %></p>
+  <p><%= post.body %></p>
+  <%= turbo_frame_tag "#{dom_id(post)}_likes" do %>
+    <%= render "posts/like_interaction", post: post %>
   <% end %>
+  <%= render "comments/new", post_id: post.id %>
+  <div data-controller="item-section">
+    <p> Comments: <button data-action="item-section#toggle" class="show-hide-button button">Show/Hide</button></p>
+    <%= turbo_frame_tag "#{dom_id(post)}_comments", "data-item-section-target": "items" do %>
+      <%= render post.comments %>
+    <% end %>
+  </div>
+  <br>
 </div>
-<br>
-

@@ -1,17 +1,26 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+#main-content {
+  padding-left: 1em;
+}
+
 .show-hide-button {
-  font-weight: bold;
-  padding: 0 1em;
+  cursor: pointer;
 }
 
 .button {
   display: inline-block;
   text-align: center;
   min-width: 6em;
-  padding: 0 .5em;
+  padding: .1em .5em;
   border-radius: 4% / 20%;
   color: black;
   border: none;
   font: inherit;
+  font-weight: bold;
 }
 
 .singular-input {
@@ -38,6 +47,10 @@ input.button {
   background-color: indianred;
 }
 
+.post-button {
+  background-color: cadetblue;
+}
+
 .follow-button.not-following {
   background-color: seagreen;
 }
@@ -55,10 +68,17 @@ input.button {
   display: flex;
   align-items: center;
   gap: 1em;
+  padding-left: 1em;
+}
+
+.navbar-top {
+  position: sticky;
+  top: 0px;
+  border-bottom: solid lightgrey 2px;
+  background-color: white;
 }
 
 .menu-vertical {
-  background-color: lightblue;
   padding: .2em 2em;
   display: flex;
   justify-content: space-between;
@@ -78,4 +98,33 @@ input.button {
 nav a {
   text-decoration: underline;
   color: black;
+}
+
+#user-info {
+  padding-left: 2em;
+}
+
+#user-info > h1 {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#bio-text {
+  width: 20em;
+  min-height: 4em;
+  background-color: lightgrey;
+}
+
+.post {
+  padding-left: 1em;
+  border-bottom: lightgrey solid 3px;
+}
+
+.like-heart {
+  font-size: 1.5em;
+}
+
+.like-heart > a {
+  text-decoration: none;
 }
