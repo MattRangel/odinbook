@@ -1,3 +1,12 @@
+cloudinary_default: &cloudinary_default
+  service: Cloudinary
+  secure: true
+
+production:
+  <<: *cloudinary_default
+  tags:
+    - prod
+
 test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
