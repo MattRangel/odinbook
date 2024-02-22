@@ -49,6 +49,7 @@ input.button {
 
 .post-button {
   background-color: cadetblue;
+  margin-top: .5em;
 }
 
 .follow-button.not-following {
@@ -128,4 +129,12 @@ nav a {
 
 .like-heart > a {
   text-decoration: none;
+}
+
+textarea, input[type="text"] {
+  font-size: inherit;
+}
+
+#new-post-form {
+  font-size: 1.5em;
 }
