@@ -1,4 +1,4 @@
-<%= form_with url: comments_path, scope: :comment, data: {"controller":"static-form", "action":"turbo:submit-end->static-form#clear"} do |f|  %>
+<%= form_with url: comments_path, scope: :comment, data: {"controller":"form", "action":"turbo:submit-end->form#clear"} do |f|  %>
   <%= f.text_field :body %>
   <%= f.hidden_field :post_id, value: post_id %>
   <%= f.submit "Post Comment", class: "button post-button" %>
