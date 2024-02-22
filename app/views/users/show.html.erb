@@ -1,6 +1,6 @@
 <div id="user-info">
   <h1>
-  <%= image_tag @user.photo_url, class: "profile-photo" %>
+  <%= image_tag @user.avatar_url, class: "profile-photo" %>
   <%= turbo_frame_tag "user-header" do %>
     <%= @user.name %> |
     <% if current_user.eql?(@user) %>

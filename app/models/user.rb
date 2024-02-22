@@ -21,7 +21,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  before_save :set_photo_url
+  before_create :set_def_avatar_url
   after_create -> { UserMailer.with(user: self).welcome_email.deliver_later }
 
   def self.from_omniauth(auth)
@@ -37,10 +37,14 @@ class User < ApplicationRecord
     self.following_user_ids << self.id
   end
 
+  def avatar_url
+    self.def_avatar_url
+  end
+
   private
 
-  def set_photo_url
-    self.photo_url = self.gravatar_photo_url if self.photo_url.nil?
+  def set_def_avatar_url
+    self.def_avatar_url = self.gravatar_avatar_url if self.def_avatar_url.nil?
   end
 
   def gravatar_photo_url
