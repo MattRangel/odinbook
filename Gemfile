@@ -6,6 +6,9 @@ ruby "3.1.2"
 # use postmark to send emails [https://github.com/ActiveCampaign/postmark-rails/]
 gem "postmark-rails"
 
+# use cloudinary for image storage [https://github.com/cloudinary/cloudinary_gem]
+gem "cloudinary"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
 
