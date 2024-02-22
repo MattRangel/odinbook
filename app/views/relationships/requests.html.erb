@@ -1,2 +1,2 @@
 <h1>Follow Requests</h1>
-<%= render @users, button_partial: "relationships/response" %>
+<%= render(@users, button_partial: "relationships/response") || tag.h3("No pending requests!") %>
