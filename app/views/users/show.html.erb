@@ -6,7 +6,7 @@
       <%= link_to image_tag(url_for(@user.avatar), class: "profile-photo"), edit_user_path, class: "profile-photo" %>
     <% end %>
   <% else %>
-    <%= image_tag(@user.avatar_url, class: "profile-photo")%>
+    <%= image_tag(url_for(@user.avatar), class: "profile-photo")%>
   <% end %>
   <%= turbo_frame_tag "user-name" do %>
     <%= @user.name %> |
