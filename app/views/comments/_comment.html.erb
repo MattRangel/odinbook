@@ -1,1 +1,5 @@
-<p>&emsp;<i><%= link_to comment.user.name, comment.user, target: "_top" %></i>: <%= comment.body %></p>
+<p class="comment">
+&ensp;
+<%= image_tag url_for(comment.user.avatar), class: "profile-photo" %>
+<i><%= link_to comment.user.name, comment.user, target: "_top" %></i>: <%= comment.body %>
+</p>

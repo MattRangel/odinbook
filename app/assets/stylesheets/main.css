@@ -163,3 +163,13 @@ textarea, input[type="text"] {
 #user_avatar_image {
   display: none;
 }
+
+.comment, .post-head {
+  display: flex;
+  align-items: center;
+}
+
+.comment > .profile-photo,
+.post-head > .profile-photo {
+  margin-right: .5em;
+}

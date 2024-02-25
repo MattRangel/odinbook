@@ -1,5 +1,9 @@
 <div class="post">
-  <p><%= link_to post.user.email, post.user %> @ <%= post.created_at.to_fs(:long) %></p>
+  <p class="post-head">
+    <%= image_tag url_for(post.user.avatar), class: "profile-photo" %>
+    <%= link_to post.user.email, post.user %>
+    &ensp;@ <%= post.created_at.to_fs(:long) %>
+  </p>
   <p><%= post.body %></p>
   <%= turbo_frame_tag "#{dom_id(post)}_likes" do %>
     <%= render "posts/like_interaction", post: post %>
