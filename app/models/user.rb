@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: %i[github]
 
+  has_one_attached :avatar_image
+
   validates :bio, length: { maximum: 100 }
   validates :name, length: { maximum: 12 }, presence: true
   has_many :followed_by_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
@@ -37,8 +39,8 @@ class User < ApplicationRecord
     self.following_user_ids << self.id
   end
 
-  def avatar_url
-    self.def_avatar_url
+  def avatar
+    self.avatar_image.attached? ? self.avatar_image : self.def_avatar_url
   end
 
   private

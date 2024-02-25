@@ -1,7 +1,14 @@
 <div id="user-info">
   <h1>
-  <%= image_tag @user.avatar_url, class: "profile-photo" %>
-  <%= turbo_frame_tag "user-header" do %>
+  <% if current_user.eql?(@user) %>
+    <%= turbo_frame_tag "user-avatar", class: "upload-icon-container" do %>
+      <span class="upload-icon">✏️</span>
+      <%= link_to image_tag(url_for(@user.avatar), class: "profile-photo"), edit_user_path, class: "profile-photo" %>
+    <% end %>
+  <% else %>
+    <%= image_tag(@user.avatar_url, class: "profile-photo")%>
+  <% end %>
+  <%= turbo_frame_tag "user-name" do %>
     <%= @user.name %> |
     <% if current_user.eql?(@user) %>
         <%= link_to tag.div("Edit", class: "button edit-button"), edit_user_path %>

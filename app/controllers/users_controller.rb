@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(user_params)
-    redirect_to user_path
+    user.avatar.attach(params[:avatar_image]) unless params[:avatar_image].nil?
+    redirect_to edit_user_path
   end
 
   def index
@@ -19,6 +20,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :bio)
+    params.require(:user).permit(:name, :bio, :avatar_image)
   end
 end

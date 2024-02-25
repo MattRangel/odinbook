@@ -1,8 +1,20 @@
+<h1>Upload an Avatar</h1>
+<h2>
+  <%= turbo_frame_tag "user-avatar" do %>
+    <%= form_with model: @user, data: { controller: "form" }, class: "profile-photo" do |f| %>
+      <%= f.label :avatar_image, class: "upload-icon-container" do %>
+        <span class="upload-icon">📤</span>
+        <%= image_tag(url_for(@user.avatar), class: "profile-photo")%>
+      <% end %>
+      <%= f.file_field :avatar_image, accept: 'image/png,image/jpeg', "data-action": "change->form#submit" %>
+    <% end %>
+  <% end %>
+</h2>
 <h1>Edit Your Display Name</h1>
 <h2>
-<%= turbo_frame_tag "user-header" do %>
+<%= turbo_frame_tag "user-name" do %>
   <%= form_with model: @user do |f| %>
-    <%= f.text_field :name, size: 15, "max-length": 12, class: "singular-input", value: @user.name %>
+    <%= f.text_field :name, value: @user.name, size: 15, "max-length": 12, class: "singular-input" %>
     <%= f.submit "Save", class: "button edit-button" %>
   <% end %>
 <% end %>

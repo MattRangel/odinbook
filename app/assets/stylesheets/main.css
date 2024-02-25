@@ -62,6 +62,7 @@ input.button {
 
 .profile-photo {
   height: 2em;
+  width: 2em;
   border-radius: 10%;
 }
 
@@ -74,6 +75,7 @@ input.button {
 
 .navbar-top {
   position: sticky;
+  z-index: 1;
   top: 0px;
   border-bottom: solid lightgrey 2px;
   background-color: white;
@@ -137,4 +139,27 @@ textarea, input[type="text"] {
 
 #new-post-form {
   font-size: 1.5em;
+}
+
+.avatar-upload {
+  display: inline-flex;
+  flex-direction: vertical;
+}
+
+.upload-icon {
+  position: absolute;
+  opacity: 85%;
+  pointer-events: none;
+  text-shadow: black 0 0 10px;
+}
+
+.upload-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#user_avatar_image {
+  display: none;
 }
