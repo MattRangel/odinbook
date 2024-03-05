@@ -16,9 +16,6 @@ class User < ApplicationRecord
   has_many :followed_by_users_accepted, -> { where('relationships.accepted': true) }, through: :followed_by_relationships, source: :followed_by
   has_many :followed_by_users_pending, -> { where('relationships.accepted': false) }, through: :followed_by_relationships, source: :followed_by
 
-  delegate :find_relationship_following, to: :following_relationships
-  delegate :find_relationship_followed_by, to: :followed_by_relationships
-
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -41,6 +38,10 @@ class User < ApplicationRecord
 
   def avatar
     self.avatar_image.attached? ? self.avatar_image : self.def_avatar_url
+  end
+
+  def find_followed_by_id(user_id)
+    followed_by_relationships.detect { |relation| relation.followed_by_id == user_id }
   end
 
   private
