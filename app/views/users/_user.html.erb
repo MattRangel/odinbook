@@ -2,5 +2,5 @@
 <div class="user-card">
 <%= image_tag url_for(user.avatar), class: "profile-photo" %>
 <p><%= link_to user.name, user_path(user) %> ( <%= user.email %> )</p>
-<%= render button_partial, user_id: user.id unless current_user.eql?(user) || button_partial.nil? %>
+<%= render button_partial, user: user unless current_user.eql?(user) || button_partial.nil? %>
 </div>
