@@ -1,19 +1,19 @@
 class RelationshipsController < ApplicationController
   def create
-    current_user.following_relationships.create(relationship_params)
-    render partial: "users/follow", locals: {user_id: relationship_params[:following_id]}
+    relationship = current_user.following_relationships.create(relationship_params)
+    render partial: "users/follow", locals: {user: relationship.following}
   end
 
   def destroy
     relationship = current_user.followed_by_relationships.find_by(followed_by_id: relationship_params[:followed_by_id])
     relationship.destroy unless relationship.nil?
-    render turbo_stream: turbo_stream.remove("user_#{relationship_params[:followed_by_id]}_response")
+    render turbo_stream: turbo_stream.remove("response_user_#{relationship_params[:followed_by_id]}")
   end
 
   def update
     relationship = current_user.followed_by_relationships.where(relationship_params)
     relationship.update(accepted: true) unless relationship.nil?
-    render turbo_stream: turbo_stream.remove("user_#{relationship_params[:followed_by_id]}_response")
+    render turbo_stream: turbo_stream.remove("response_user_#{relationship_params[:followed_by_id]}")
   end
 
   def following
