@@ -1,7 +1,7 @@
-<%= turbo_frame_tag "user_#{user_id}_follow" do %>
-  <% if relationship = current_user.find_relationship_following(user_id) %>
+<%= turbo_frame_tag dom_id(user, :follow) do %>
+  <% if relationship = user.find_followed_by_id(current_user.id) %>
     <%= tag.div relationship.accepted? ? "Following" : "Requested", class: "button follow-button" %>
   <% else %>
-    <%= link_to tag.div("Follow", class: "button follow-button not-following"), relationships_path(relationship:{following_id: user_id}, authenticity_token: form_authenticity_token), data: { turbo_method: :post } %>
+    <%= link_to tag.div("Follow", class: "button follow-button not-following"), relationships_path(relationship:{following_id: user.id}, authenticity_token: form_authenticity_token), data: { turbo_method: :post } %>
   <% end %>
 <% end %>
