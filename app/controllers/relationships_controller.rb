@@ -17,15 +17,15 @@ class RelationshipsController < ApplicationController
   end
 
   def following
-    @users = current_user.following_users
+    @users = current_user.following_users.for_view
   end
 
   def followed_by
-    @users = current_user.followed_by_users_accepted
+    @users = current_user.followed_by_users_accepted.for_view
   end
 
   def requests
-    @users = current_user.followed_by_users_pending
+    @users = current_user.followed_by_users_pending.for_view
   end
 
   private

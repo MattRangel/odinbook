@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
-    @posts = @user.posts.for_view
+    @user = User.for_view.find(params[:id])
+    @posts = Post.feed(params[:id])
   end
 
   def edit
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.includes(:followed_by_relationships)
+    @users = User.all.includes(:followed_by_relationships).for_view
   end
 
   private

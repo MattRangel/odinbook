@@ -6,9 +6,11 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: %i[github]
 
   has_one_attached :avatar_image
+  scope :for_view, -> { includes(avatar_image_attachment: :blob) }
 
   validates :bio, length: { maximum: 100 }
   validates :name, length: { maximum: 12 }, presence: true
+
   has_many :followed_by_relationships, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   has_many :following_relationships, class_name: "Relationship", foreign_key: "followed_by_id", dependent: :destroy
 
