@@ -35,11 +35,11 @@ class User < ApplicationRecord
   end
 
   def feed_user_ids
-    self.following_user_ids << self.id
+    following_user_ids << id
   end
 
   def avatar
-    self.avatar_image.attached? ? self.avatar_image : self.def_avatar_url
+    avatar_image.attached? ? avatar_image : def_avatar_url
   end
 
   def find_followed_by_id(user_id)
@@ -49,11 +49,11 @@ class User < ApplicationRecord
   private
 
   def set_def_avatar_url
-    self.def_avatar_url = self.gravatar_avatar_url if self.def_avatar_url.nil?
+    self.def_avatar_url = gravatar_avatar_url if def_avatar_url.nil?
   end
 
   def gravatar_photo_url
     "https://gravatar.com/avatar/" +
-      Digest::SHA256.hexdigest(self.email)
+      Digest::SHA256.hexdigest(email)
   end
 end
