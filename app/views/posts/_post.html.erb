@@ -4,6 +4,7 @@
     <%= link_to post.user.email, post.user %>
     &ensp;@ <%= post.created_at.to_fs(:long) %>
   </p>
+  <%= image_tag post.image_url, class: "post-image" unless post.image_url.nil? %>
   <p><%= post.body %></p>
   <%= turbo_frame_tag "#{dom_id(post)}_likes" do %>
     <%= render "posts/like_interaction", post: post %>
