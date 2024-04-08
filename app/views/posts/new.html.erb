@@ -2,5 +2,7 @@
 <%= form_with model: @post, id: "new-post-form" do |f| %>
   <%= f.text_area :body, maxlength: 210, size: "30x7" %>
   <br>
+  <%= f.url_field :image_url, size: "28", placeholder: "Photo URL" %>
+  <br>
   <%= f.submit "Post", class: "button post-button" %>
 <% end %>
